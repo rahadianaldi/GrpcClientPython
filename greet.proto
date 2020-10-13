@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package greet;
+
+service Greeter {
+  rpc SayHello (HelloRequest) returns (HelloReply) {};
+
+  rpc GetListMahasiswa (empty) returns (ListMhs) {};
+
+  rpc DetailMahasiswa (ID) returns (Mahasiswa) {};
+
+  rpc InsertMahasiswa (Mahasiswa) returns (Result) {};
+
+  rpc EditMahasiswa (Mahasiswa) returns (Result) {};
+
+  rpc DeleteMahasiswa (ID) returns (Result) {};
+}
+
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloReply {
+  string message = 1;
+}
+
+message empty {}
+
+message Mahasiswa {
+	string nama = 1;
+	string nim = 2;
+	string asal = 3;
+	string datebirth = 4;
+}
+
+message ListMhs {
+	repeated Mahasiswa mahasiswa = 1;
+}
+
+message ID {
+	string id = 1;
+}
+
+message Result {
+	string txt = 1;
+}
